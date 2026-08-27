@@ -57,7 +57,7 @@ log "Rotating bootstrap credentials"
 CL="$HOME/.qwen-cluster"
 umask 077
 openssl rand -hex 24 > "$CL/infinity-owner-token.new"
-printf 'sk-qwen-%s\n' "$(openssl rand -base64 48 | tr -dc 'A-Za-z0-9_-' | head -c 48)" > "$CL/api.key.new"
+printf 'sk-qwen-%s\n' "$(openssl rand -hex 24)" > "$CL/api.key.new"
 mv "$CL/infinity-owner-token.new" "$CL/infinity-owner-token"
 mv "$CL/api.key.new" "$CL/api.key"
 chmod 600 "$CL/infinity-owner-token" "$CL/api.key"
